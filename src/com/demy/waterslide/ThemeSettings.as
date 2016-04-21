@@ -9,6 +9,7 @@ package com.demy.waterslide
 		public static const FONT:String = "Lucida Sans Unicode";
 		
 		public static const SMALL_TEXT_SIZE:Number = 12;
+		public static const BIG_TEXT_SIZE:Number = 32;
 		
 		public static const FIRST_TEXT_COLOR:uint = 0x004040;
 		

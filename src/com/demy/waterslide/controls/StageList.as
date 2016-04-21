@@ -11,7 +11,6 @@ package com.demy.waterslide.controls
 	public class StageList extends List 
 	{
 		private static const GAP:Number = 3;
-		private static const PADDING:Number = 10;
 		
 		public function StageList() 
 		{
@@ -24,7 +23,6 @@ package com.demy.waterslide.controls
 		{
 			const layout:HorizontalLayout = new HorizontalLayout();
 			layout.gap = GAP;
-			layout.padding = PADDING;
 			return layout;
 		}
 		

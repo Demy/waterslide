@@ -44,7 +44,7 @@ package com.demy._test.controls
 			testListPanel.addEventListener(Event.CHANGE, listEventHandler);
 			
 			const testStage:GameStage = new GameStage(TestUtils.getRandomName());
-			testListPanel.addStage(testStage);
+			testListPanel.addAndSelectStage(testStage);
 			
 			TestUtils.executeAfter(100, checkListChanged, this);
 		}
@@ -55,7 +55,7 @@ package com.demy._test.controls
 			eventCought = false;
 			
 			const testStage:GameStage = new GameStage(TestUtils.getRandomName());
-			testListPanel.addStage(testStage);
+			testListPanel.addAndSelectStage(testStage);
 			
 			testListPanel.addEventListener(Event.SELECT, listEventHandler);
 			const list:List = findList(testListPanel);

@@ -1,5 +1,6 @@
-package com.demy._test 
+package com.demy._test.model 
 {
+	import com.demy._test.TestUtils;
 	import com.demy.waterslide.model.GameStage;
 	import org.flexunit.Assert;
 	/**

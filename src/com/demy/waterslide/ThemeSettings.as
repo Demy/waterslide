@@ -14,7 +14,7 @@ package com.demy.waterslide
 		
 		public static const MAIN_COLOR:uint = 0x79DEFF;
 		public static const LIGHT_MAIN_COLOR:uint = 0xD5F4FF;
-		public static const SECONDARY_COLOR:uint = 0xEEEEEE;
+		public static const SECONDARY_COLOR:uint = 0xC0C0C0;
 		
 		public function ThemeSettings() 
 		{

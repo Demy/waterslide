@@ -1,4 +1,4 @@
-package com.demy._test 
+package com.demy._test.controls 
 {
 	import com.demy.waterslide.controls.StageList;
 	import org.flexunit.Assert;

@@ -1,5 +1,6 @@
-package com.demy._test 
+package com.demy._test.controls 
 {
+	import com.demy._test.TestUtils;
 	import com.demy.waterslide.model.GameStage;
 	import com.demy.waterslide.controls.StageListCell;
 	import feathers.controls.List;

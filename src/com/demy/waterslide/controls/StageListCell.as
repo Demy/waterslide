@@ -16,7 +16,7 @@ package com.demy.waterslide.controls
 	public class StageListCell extends DefaultListItemRenderer 
 	{
 		private static const WIDTH:Number = 80;
-		private static const HEIGHT:Number = 90;
+		private static const HEIGHT:Number = 50;
 		
 		public function StageListCell() 
 		{

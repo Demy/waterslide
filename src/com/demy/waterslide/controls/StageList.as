@@ -3,6 +3,7 @@ package com.demy.waterslide.controls
 	import feathers.controls.List;
 	import feathers.layout.HorizontalLayout;
 	import feathers.layout.ILayout;
+	import starling.events.Event;
 	
 	/**
 	 * ...
@@ -12,11 +13,15 @@ package com.demy.waterslide.controls
 	{
 		private static const GAP:Number = 3;
 		
+		private var lastTappedIndex:int;
+		
 		public function StageList() 
 		{
 			layout = createHorizontalLayout();
 			
 			itemRendererType = StageListCell;
+			
+			addEventListener(Event.TRIGGERED, dispatchEditOnDoubleTap);
 		}
 		
 		private function createHorizontalLayout():ILayout 
@@ -24,6 +29,13 @@ package com.demy.waterslide.controls
 			const layout:HorizontalLayout = new HorizontalLayout();
 			layout.gap = GAP;
 			return layout;
+		}
+		
+		private function dispatchEditOnDoubleTap(e:Event):void 
+		{
+			if (lastTappedIndex == selectedIndex) 
+				dispatchEventWith(StageListPanel.EDIT);
+			lastTappedIndex = selectedIndex;
 		}
 		
 	}

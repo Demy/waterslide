@@ -23,6 +23,15 @@ package com.demy._test.model
 			Assert.assertEquals(name, testStage.name);
 		}
 		
+		[Test]
+		public function whenSetNameReturnsSameName():void
+		{
+			const testStage:GameStage = new GameStage(TestUtils.getRandomName());
+			const newName:String = TestUtils.getRandomName();
+			testStage.setName(newName);
+			Assert.assertEquals(newName, testStage.name);
+		}
+		
 	}
 
 }

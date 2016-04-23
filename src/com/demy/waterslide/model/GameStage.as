@@ -13,6 +13,11 @@ package com.demy.waterslide.model
 			_name = name;
 		}
 		
+		public function setName(value:String):void
+		{
+			_name = value;
+		}
+		
 		public function get name():String 
 		{
 			return _name;

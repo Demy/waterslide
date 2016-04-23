@@ -4,6 +4,7 @@ package com.demy.waterslide.controls
 	import com.demy.waterslide.model.GameStage;
 	import feathers.controls.Button;
 	import feathers.controls.Panel;
+	import feathers.core.PopUpManager;
 	import feathers.data.ListCollection;
 	import feathers.layout.HorizontalLayout;
 	import starling.events.Event;
@@ -13,6 +14,10 @@ package com.demy.waterslide.controls
 	 */
 	public class StageListPanel extends Panel
 	{		
+		public static const EDIT:String = "edit stage";
+		
+		private static const NEW_STAGE_NAME:String = "New stage";
+		
 		private static const PADDING:Number = 10;
 		
 		private var listView:StageList;
@@ -40,18 +45,42 @@ package com.demy.waterslide.controls
 			listView = new StageList();
 			listView.dataProvider = new ListCollection([]);
 			listView.addEventListener(Event.SELECT, selectStage);
+			listView.addEventListener(EDIT, showEditStageDialog);
 			addChild(listView);
+		}
+		
+		private function selectStage(e:Event = null):void 
+		{
+			dispatchEventWith(Event.SELECT, false, listView.selectedItem);
+		}
+		
+		private function showEditStageDialog(e:Event):void 
+		{
+			showEditDialog(listView.selectedItem as GameStage);
 		}
 		
 		private function createAndAddButton():void 
 		{
 			addButton = new AddStageButton();
 			addChild(addButton);
+			addButton.addEventListener(Event.TRIGGERED, showAddStageDialog);
 		}
 		
-		private function selectStage(e:Event = null):void 
+		private function showAddStageDialog(e:Event):void 
 		{
-			dispatchEventWith(Event.SELECT, false, listView.selectedItem);
+			showEditDialog(new GameStage(NEW_STAGE_NAME));
+		}
+		
+		private function showEditDialog(gameStage:GameStage):void 
+		{
+			const dialog:Panel = new EditStageDialog(gameStage);
+			PopUpManager.addPopUp(dialog);
+			dialog.addEventListener(Event.COMPLETE, updateItem);
+		}
+		
+		private function updateItem(e:Event):void 
+		{
+			listView.dataProvider.updateItemAt(listView.selectedIndex);
 		}
 		
 		public function addAndSelectStage(stage:GameStage):void

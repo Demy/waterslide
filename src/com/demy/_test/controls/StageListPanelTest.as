@@ -2,9 +2,11 @@ package com.demy._test.controls
 {
 	import com.demy._test.TestMain;
 	import com.demy._test.TestUtils;
+	import com.demy.waterslide.controls.EditStageDialog;
 	import com.demy.waterslide.model.GameStage;
 	import com.demy.waterslide.controls.StageListPanel;
 	import feathers.controls.List;
+	import feathers.core.PopUpManager;
 	import flash.display.Sprite;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -46,7 +48,7 @@ package com.demy._test.controls
 			const testStage:GameStage = new GameStage(TestUtils.getRandomName());
 			testListPanel.addAndSelectStage(testStage);
 			
-			TestUtils.executeAfter(100, checkListChanged, this);
+			TestUtils.executeAfterTimeout(checkListChanged, this);
 		}
 		
 		[Test(async)]
@@ -62,7 +64,7 @@ package com.demy._test.controls
 			list.selectedIndex = 0;
 			list.dispatchEventWith(Event.SELECT);
 			
-			TestUtils.executeAfter(100, checkItemSelected, this);
+			TestUtils.executeAfterTimeout(checkItemSelected, this);
 		}
 		
 		private function findList(container:DisplayObjectContainer):List 
@@ -92,6 +94,38 @@ package com.demy._test.controls
 		private function checkListChanged(event:TimerEvent, data:Object = null):void 
 		{
 			Assert.assertTrue(eventCought);
+		}
+		
+		[Test(async)]
+		public function ifButtonPressedThenDialogPopsUp():void
+		{
+			Assert.assertFalse(TestUtils.hasTopLevelPopup());
+			
+			TestUtils.findButton(testListPanel).dispatchEventWith(Event.TRIGGERED);
+			TestUtils.executeAfterTimeout(checkPopupExists, this);
+		}
+		
+		private function checkPopupExists(event:TimerEvent, data:Object = null):void 
+		{
+			Assert.assertTrue(TestUtils.hasTopLevelPopup());
+			PopUpManager.removePopUp(TestUtils.getTopLevelPopup());
+		}
+		
+		[Test(async)]
+		public function ifListDoublePressedThenDialogWithSelectedItemPopsUp():void
+		{
+			Assert.assertFalse(TestUtils.hasTopLevelPopup());
+			
+			testListPanel.addAndSelectStage(new GameStage(TestUtils.getRandomName()));
+			findList(testListPanel).dispatchEventWith(StageListPanel.EDIT);
+			TestUtils.executeAfterTimeout(checkPopupHasSelectedItem, this);
+		}
+		
+		private function checkPopupHasSelectedItem(event:TimerEvent, data:Object = null):void 
+		{
+			const dialog:EditStageDialog = TestUtils.getTopLevelPopup() as EditStageDialog;
+			PopUpManager.removePopUp(TestUtils.getTopLevelPopup());
+			Assert.assertEquals(dialog.item, findList(testListPanel).selectedItem);
 		}
 		
 		[After]

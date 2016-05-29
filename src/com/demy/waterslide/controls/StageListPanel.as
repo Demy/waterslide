@@ -68,19 +68,33 @@ package com.demy.waterslide.controls
 		
 		private function showAddStageDialog(e:Event):void 
 		{
-			showEditDialog(new GameStage(NEW_STAGE_NAME));
+			showEditDialog(new GameStage(NEW_STAGE_NAME), true);
 		}
 		
-		private function showEditDialog(gameStage:GameStage):void 
+		private function showEditDialog(gameStage:GameStage, isNew:Boolean):void 
 		{
 			const dialog:Panel = new EditStageDialog(gameStage);
 			PopUpManager.addPopUp(dialog);
-			dialog.addEventListener(Event.COMPLETE, updateItem);
+			if (isNew) 
+			{
+				dialog.addEventListener(Event.COMPLETE, addItem);
+			}
+			else
+			{
+				dialog.addEventListener(Event.COMPLETE, updateItem);
+			}
+		}
+		
+		private function addItem(e:Event):void 
+		{
+			listView.dataProvider.addItem(e.data as GameStage);
+			e.currentTarget.removeEventListener(Event.COMPLETE, addItem);
 		}
 		
 		private function updateItem(e:Event):void 
 		{
 			listView.dataProvider.updateItemAt(listView.selectedIndex);
+			e.currentTarget.removeEventListener(Event.COMPLETE, updateItem);
 		}
 		
 		public function addAndSelectStage(stage:GameStage):void

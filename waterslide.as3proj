@@ -57,6 +57,7 @@
     <element path="lib\flexunit-uilistener-4.1.0-RC1.61-sdk4.0.0.14159.swc" />
     <element path="lib\hamcrest-1.0.2.swc" />
     <element path="lib\feathers.swc" />
+    <element path="lib\AeonDesktopTheme.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

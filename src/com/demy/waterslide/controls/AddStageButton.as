@@ -4,6 +4,7 @@ package com.demy.waterslide.controls
 	import feathers.controls.Button;
 	import feathers.controls.text.TextFieldTextRenderer;
 	import feathers.core.ITextRenderer;
+	import feathers.skins.IStyleProvider;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import starling.display.Quad;
@@ -14,32 +15,15 @@ package com.demy.waterslide.controls
 	 */
 	public class AddStageButton extends Button 
 	{
+		public static var globalStyleProvider:IStyleProvider;
 		
 		public function AddStageButton() 
-		{
-			
+		{		
 		}
 		
-		override protected function initialize():void 
+		override protected function get defaultStyleProvider():IStyleProvider
 		{
-			super.initialize();
-			
-			defaultSkin = new Quad(1, 1, ThemeSettings.LIGHT_MAIN_COLOR);
-			
-			labelFactory = createPlusLabel;
-			label = "+";
-			
-			width = ThemeSettings.BIG_TEXT_SIZE;
-			height = ThemeSettings.BIG_TEXT_SIZE;
-		}
-		
-		private function createPlusLabel():ITextRenderer 
-		{
-			const label:TextFieldTextRenderer = new TextFieldTextRenderer();
-			label.textFormat = new TextFormat(ThemeSettings.FONT, ThemeSettings.SMALL_TEXT_SIZE);
-			label.textFormat.align = TextFormatAlign.CENTER;
-			label.wordWrap = true;
-			return label;
+			return AddStageButton.globalStyleProvider;
 		}
 	}
 

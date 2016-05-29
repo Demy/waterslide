@@ -3,10 +3,14 @@ package com.demy.waterslide.controls
 	import com.demy.waterslide.controls.StageList;
 	import com.demy.waterslide.model.GameStage;
 	import feathers.controls.Button;
+	import feathers.controls.Header;
 	import feathers.controls.Panel;
 	import feathers.core.PopUpManager;
 	import feathers.data.ListCollection;
 	import feathers.layout.HorizontalLayout;
+	import feathers.layout.VerticalLayout;
+	import feathers.skins.IStyleProvider;
+	import starling.display.DisplayObject;
 	import starling.events.Event;
 	/**
 	 * ...
@@ -16,28 +20,25 @@ package com.demy.waterslide.controls
 	{		
 		public static const EDIT:String = "edit stage";
 		
-		private static const NEW_STAGE_NAME:String = "New stage";
+		public static var globalStyleProvider:IStyleProvider;
 		
-		private static const PADDING:Number = 10;
+		private static const NEW_STAGE_NAME:String = "Сцена";
 		
 		private var listView:StageList;
 		private var addButton:Button;
 		
 		public function StageListPanel() 
-		{			
-			createLayout();
+		{
 			createAndAddList();
 			createAndAddButton();
-			validate();
+			validate();			
 		}
 		
-		private function createLayout():void 
+		override protected function initialize():void 
 		{
-			const layout:HorizontalLayout = new HorizontalLayout();
-			layout.verticalAlign = HorizontalLayout.VERTICAL_ALIGN_MIDDLE;
-			layout.gap = PADDING;
-			layout.padding = PADDING;
-			this.layout = layout;
+			super.initialize();
+			
+			title = "Сцена:";
 		}
 		
 		private function createAndAddList():void 
@@ -56,7 +57,7 @@ package com.demy.waterslide.controls
 		
 		private function showEditStageDialog(e:Event):void 
 		{
-			showEditDialog(listView.selectedItem as GameStage);
+			showEditDialog(listView.selectedItem as GameStage, false);
 		}
 		
 		private function createAndAddButton():void 
@@ -68,7 +69,7 @@ package com.demy.waterslide.controls
 		
 		private function showAddStageDialog(e:Event):void 
 		{
-			showEditDialog(new GameStage(NEW_STAGE_NAME), true);
+			showEditDialog(new GameStage(NEW_STAGE_NAME.concat(listView.dataProvider.length)), true);
 		}
 		
 		private function showEditDialog(gameStage:GameStage, isNew:Boolean):void 
@@ -87,14 +88,18 @@ package com.demy.waterslide.controls
 		
 		private function addItem(e:Event):void 
 		{
+			if ((e.data as GameStage).name == "") return;
 			listView.dataProvider.addItem(e.data as GameStage);
 			e.currentTarget.removeEventListener(Event.COMPLETE, addItem);
+			PopUpManager.removePopUp(e.currentTarget as DisplayObject);
 		}
 		
 		private function updateItem(e:Event):void 
 		{
+			if ((e.data as GameStage).name == "") return;
 			listView.dataProvider.updateItemAt(listView.selectedIndex);
 			e.currentTarget.removeEventListener(Event.COMPLETE, updateItem);
+			PopUpManager.removePopUp(e.currentTarget as DisplayObject);
 		}
 		
 		public function addAndSelectStage(stage:GameStage):void
@@ -121,15 +126,30 @@ package com.demy.waterslide.controls
 			}
 		}
 		
-		override public function set width(value:Number):void 
+		public function setWidth(value:Number):void
 		{
-			listView.width = value - PADDING * 3 - addButton.width;
-			super.width = value;
+			listView.width = value - addButton.width - getGap();
+		}
+		
+		private function getGap():Number 
+		{
+			if (layout is HorizontalLayout) return (layout as HorizontalLayout).gap
+			if (layout is VerticalLayout) return (layout as VerticalLayout).gap
+			return 0;
+		}
+		
+		override protected function get defaultStyleProvider():IStyleProvider
+		{
+			return StageListPanel.globalStyleProvider;
 		}
 		
 		override public function dispose():void 
 		{
 			disposeListView();
+			
+			addButton.removeEventListener(Event.TRIGGERED, showAddStageDialog);
+			addButton.dispose();
+			addButton = null;
 			
 			super.dispose();
 		}

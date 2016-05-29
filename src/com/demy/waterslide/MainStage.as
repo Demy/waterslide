@@ -2,6 +2,7 @@ package com.demy.waterslide
 {
 	import com.demy.waterslide.controls.StageListPanel;
 	import com.demy.waterslide.model.GameStage;
+	import com.demy.waterslide.model.ImageList;
 	import com.demy.waterslide.theme.WaterSlideAeonTheme;
 	import starling.core.Starling;
 	import starling.display.Sprite;
@@ -25,6 +26,8 @@ package com.demy.waterslide
 			testPanel.addAndSelectStage(new GameStage("test"));
 			testPanel.addAndSelectStage(new GameStage("test"));
 			addChild(testPanel);
+			
+			new ImageList();
 		}
 		
 	}

@@ -3,7 +3,7 @@ package com.demy._test.controls
 	import com.demy._test.TestMain;
 	import com.demy._test.TestUtils;
 	import com.demy.waterslide.controls.EditStageDialog;
-	import com.demy.waterslide.model.GameStage;
+	import com.demy.waterslide.GameStage;
 	import com.demy.waterslide.controls.StageListPanel;
 	import feathers.controls.List;
 	import feathers.core.PopUpManager;

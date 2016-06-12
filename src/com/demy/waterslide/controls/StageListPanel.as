@@ -1,7 +1,7 @@
 package com.demy.waterslide.controls 
 {
 	import com.demy.waterslide.controls.StageList;
-	import com.demy.waterslide.model.GameStage;
+	import com.demy.waterslide.GameStage;
 	import feathers.controls.Button;
 	import feathers.controls.Header;
 	import feathers.controls.Panel;

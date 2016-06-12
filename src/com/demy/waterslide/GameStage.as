@@ -1,4 +1,4 @@
-package com.demy.waterslide.model 
+package com.demy.waterslide 
 {
 	/**
 	 * ...

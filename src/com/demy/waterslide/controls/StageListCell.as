@@ -1,7 +1,7 @@
 package com.demy.waterslide.controls 
 {
 	import com.demy.waterslide.ThemeSettings;
-	import com.demy.waterslide.model.GameStage;
+	import com.demy.waterslide.GameStage;
 	import feathers.controls.renderers.DefaultListItemRenderer;
 	import feathers.controls.text.TextFieldTextRenderer;
 	import feathers.core.ITextRenderer;

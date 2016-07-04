@@ -1,5 +1,7 @@
-package com.demy.waterslide.controls 
+package com.demy.waterslide.stages 
 {
+	import com.demy.waterslide.stages.StageListCell;
+	import com.demy.waterslide.stages.StageListPanel;
 	import feathers.controls.List;
 	import feathers.layout.HorizontalLayout;
 	import feathers.layout.ILayout;

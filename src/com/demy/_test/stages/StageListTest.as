@@ -1,8 +1,8 @@
-package com.demy._test.controls 
+package com.demy._test.stages 
 {
 	import com.demy._test.TestUtils;
-	import com.demy.waterslide.controls.StageList;
-	import com.demy.waterslide.controls.StageListPanel;
+	import com.demy.waterslide.stages.StageList;
+	import com.demy.waterslide.stages.StageListPanel;
 	import com.demy.waterslide.GameStage;
 	import feathers.controls.Button;
 	import feathers.controls.supportClasses.ListDataViewPort;

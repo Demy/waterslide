@@ -1,8 +1,9 @@
 package com.demy.waterslide 
 {
-	import com.demy.waterslide.controls.StageListPanel;
+	import com.demy.waterslide.stages.StageListPanel;
 	import com.demy.waterslide.GameStage;
-	import com.demy.waterslide.LocalImageLoader;
+	import com.demy.waterslide.textures.LocalImageLoader;
+	import com.demy.waterslide.textures.TextureListPanel;
 	import com.demy.waterslide.theme.WaterSlideAeonTheme;
 	import starling.core.Starling;
 	import starling.display.Sprite;
@@ -18,16 +19,9 @@ package com.demy.waterslide
 		{
 			new WaterSlideAeonTheme();
 			
-			var testPanel:StageListPanel = new StageListPanel();
-			testPanel.setWidth(Starling.current.stage.stageWidth * 0.625);
-			testPanel.addAndSelectStage(new GameStage("test"));
-			testPanel.addAndSelectStage(new GameStage("test"));
-			testPanel.addAndSelectStage(new GameStage("test"));
-			testPanel.addAndSelectStage(new GameStage("test"));
-			testPanel.addAndSelectStage(new GameStage("test"));
-			addChild(testPanel);
-			
-			new LocalImageLoader();
+			var textureList:TextureListPanel = new TextureListPanel();
+			textureList.load();
+			addChild(textureList);
 		}
 		
 	}

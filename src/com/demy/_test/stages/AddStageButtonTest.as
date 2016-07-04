@@ -1,8 +1,8 @@
-package com.demy._test.controls 
+package com.demy._test.stages 
 {
 	import com.demy._test.TestMain;
 	import com.demy._test.TestUtils;
-	import com.demy.waterslide.controls.AddStageButton;
+	import com.demy.waterslide.stages.AddStageButton;
 	import flash.events.TimerEvent;
 	import org.flexunit.Assert;
 	import starling.events.Event;

@@ -1,10 +1,12 @@
 package com.demy.waterslide.theme 
 {
-	import com.demy.waterslide.controls.AddStageButton;
-	import com.demy.waterslide.controls.EditStageDialog;
-	import com.demy.waterslide.controls.StageList;
-	import com.demy.waterslide.controls.StageListCell;
-	import com.demy.waterslide.controls.StageListPanel;
+	import com.demy.waterslide.ThemeSettings;
+	import com.demy.waterslide.stages.AddStageButton;
+	import com.demy.waterslide.stages.EditStageDialog;
+	import com.demy.waterslide.stages.StageList;
+	import com.demy.waterslide.stages.StageListCell;
+	import com.demy.waterslide.stages.StageListPanel;
+	import com.demy.waterslide.textures.TextureListPanel;
 	import feathers.controls.Button;
 	import feathers.controls.Header;
 	import feathers.controls.List;
@@ -43,6 +45,9 @@ package com.demy.waterslide.theme
 				
 			this.getStyleProviderForClass( StageList ).defaultStyleFunction = 
 				this.setAddStageListStyles;
+				
+			this.getStyleProviderForClass( TextureListPanel ).defaultStyleFunction = 
+				this.setAddTextureListPanelStyles;
 		}
 		
 		private function setAddStageButtonStyles(button:Button):void 
@@ -106,6 +111,16 @@ package com.demy.waterslide.theme
 			horizontalLayout.paddingBottom = 10;
 			horizontalLayout.gap = 3;
 			list.layout = horizontalLayout;
+		}
+		
+		private function setAddTextureListPanelStyles(panel:Panel):void 
+		{
+			setPanelStyles(panel);
+			
+			const verticalLayout:VerticalLayout = new VerticalLayout();
+			verticalLayout.padding = ThemeSettings.STANDART_MARGINE;
+			verticalLayout.gap = ThemeSettings.STANDART_PADDING;
+			panel.layout = verticalLayout;
 		}
 	}
 

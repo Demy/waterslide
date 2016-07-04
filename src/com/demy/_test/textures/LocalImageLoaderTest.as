@@ -1,6 +1,6 @@
-package com.demy._test 
+package com.demy._test.textures 
 {
-	import com.demy.waterslide.LocalImageLoader;
+	import com.demy.waterslide.textures.LocalImageLoader;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
@@ -39,7 +39,7 @@ package com.demy._test
 			vector.push(EXITING_IMAGE);
 			loader.load(vector);
 			
-			// TODO finish test with starling async
+			// TODO: finish test with starling async
 		}
 		
 		[Test(async)]
@@ -50,7 +50,7 @@ package com.demy._test
 			vector.push(EXITING_IMAGE);
 			loader.load(vector);
 			
-			// TODO finish test with starling async
+			// TODO: finish test with starling async
 		}
 		
 		[Test]

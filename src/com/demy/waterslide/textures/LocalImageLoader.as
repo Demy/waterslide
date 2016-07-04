@@ -1,4 +1,4 @@
-package com.demy.waterslide 
+package com.demy.waterslide.textures 
 {
 	import flash.filesystem.File;
 	import starling.events.Event;
@@ -70,6 +70,11 @@ package com.demy.waterslide
 		public function getTexture(name:String):Texture
 		{
 			return loader.getTexture(name);
+		}
+		
+		public function getTextureNames():Vector.<String>
+		{
+			return loader.getTextureNames();
 		}
 		
 		public function isReady():Boolean

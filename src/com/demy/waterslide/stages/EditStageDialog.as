@@ -1,4 +1,4 @@
-package com.demy.waterslide.controls
+package com.demy.waterslide.stages
 {
 	import com.demy.waterslide.GameStage;
 	import feathers.controls.Button;

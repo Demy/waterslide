@@ -1,10 +1,10 @@
-package com.demy._test.controls 
+package com.demy._test.stages 
 {
 	import com.demy._test.TestMain;
 	import com.demy._test.TestUtils;
-	import com.demy.waterslide.controls.EditStageDialog;
+	import com.demy.waterslide.stages.EditStageDialog;
 	import com.demy.waterslide.GameStage;
-	import com.demy.waterslide.controls.StageListPanel;
+	import com.demy.waterslide.stages.StageListPanel;
 	import feathers.controls.List;
 	import feathers.core.PopUpManager;
 	import flash.display.Sprite;
